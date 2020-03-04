@@ -5,8 +5,7 @@ clc;
 % Global Variables Used
 audio = "sa1.F.wav";
 W_ms = 15;
-Thresh_ZC = 0.3;
-Thresh_SE = 0.05;
+
 %%
 [SigTime,Fs] = audioread(audio);
 SigTime = SigTime(1:end,1);
@@ -33,17 +32,11 @@ for i = 1:50:len-W_len-5
     TSE = sum(SqVal(i:i+W_len) );
     TSE_avg = TSE / double(W_len);
     
-    if (TZC_avg < Thresh_ZC*Avg_ZC)
+    if (TZC < 2*Avg_ZC)
         VAD_ZC(i:i+W_len)=1;
     end
-    if TSE_avg >  Thresh_SE * Avg_SE
-        VAD_SE(i:i+W_len)=1;
+    if TSE > 5 * Avg
     end
 end
-figure;
-subplot(3,1,1);
-plot(1:len , VAD_ZC,'LineWidth',1.25);
-subplot(3,1,2);
-plot(1:len , VAD_SE,'LineWidth',1.25)
-subplot(3,1,3);
-plot(1:len,SigTime)
+
+
