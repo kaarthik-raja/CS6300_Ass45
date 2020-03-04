@@ -2,7 +2,7 @@ clear all;
 clear all;
 clc;
 
-Win_ln = 25600;
+Win_ln = 512;
 audio = "a.wav";
 
 frm = "a.frm";
@@ -18,4 +18,4 @@ plot(f,mag2db( P1))
 xlim([0 3000 ])
 title('Single-Sided Amplitude Spectrum of X(t)')
 xlabel('f (Hz)')
-ylabel('|P1(f)|')
+ylabel('P1(f)')

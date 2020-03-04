@@ -4,7 +4,7 @@ clc;
 %%
 
 N = 1024;
-[x,Fs] = audioread("sa1.F.wav");
+[x,Fs] = audioread("a.wav");
 x = x(1:end,1);
 l = 1024;
 %noise = randn(50000,1);
