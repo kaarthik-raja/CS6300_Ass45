@@ -20,7 +20,8 @@ for c = 1:Skip_len:len-W_len-1
     Sig = SigTime(c:c+W_len);
     frms = GetFrms(Sig,Fs);
     
-    allfrms(j,1:5)= frms(1:5);
+    allfrms(j,1:5)= frms(1:5)
     
+    (1:5);
 end
 
