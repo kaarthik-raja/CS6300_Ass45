@@ -8,29 +8,15 @@ audio = "a.wav";
 frm = "a.frm";
 
 [SigTime,Fs] = audioread(audio);
+[formants] = get_formants(SigTime,Fs,60);
 SigTime = SigTime(1:end,1);
 skip_val = 15;
 index = (1:skip_val:length(SigTime));
 Fs = Fs / skip_val;
 SigTime = SigTime(index);
 Win_ln = length(SigTime);
-[a,e] = lpc(SigTime,1000);
-rts = roots(a);
+[a,e] = lpc(SigTime,12);
 
-rts = rts(imag(rts)>=0);
-angz = atan2(imag(rts),real(rts));
-
-[frqs,indices] = sort(angz.*(Fs/(2*pi)));
-bw = -1/2*(Fs/(2*pi))*log(abs(rts(indices)));
-
-formants = zeros(1,length(frqs));
-nn = 1;
-for kk = 1:length(frqs)
-    if (frqs(kk) > 600 && bw(kk) <400)
-        formants(nn) = frqs(kk);
-        nn = nn+1;
-    end
-end
 
 est_x = filter([0 -a(2:end)],1,SigTime);
 plot(SigTime);

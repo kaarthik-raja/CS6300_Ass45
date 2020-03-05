@@ -1,6 +1,6 @@
 %Program to find autocorrelation of a speech segment
 [y,Fs]=audioread('a.wav');%input: speech segment
-y = y(1:1000,1);
+y = y(1:5000,1);
 yl = length(y);
 %max_value=max(abs(y));
 %y=y/max_value;

@@ -1,4 +1,4 @@
-function[formants] = get_formants(SigTime)
+function[formants] = get_formants(SigTime,Fs,p)
 
 SigTime = SigTime(1:512,1);
 
@@ -7,7 +7,7 @@ x1 = x.*hamming(length(x));
 preemph = [1 0.1];
 x1 = filter(1,preemph,x1);
 
-a = lpc(x1,60);
+a = lpc(x1,p);
 rts = roots(a);
 
 rts = rts(imag(rts)>=0);
