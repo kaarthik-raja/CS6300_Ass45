@@ -3,7 +3,7 @@ clear all;
 clc;
 %%
 % Global Variables Used
-audio = "sa2.F.wav";
+audio = "./LAB_4/male_saish.wav";
 W_ms = 80;
 Skip_ms = 30; %LEss than W_ms
 Thresh_ZC = 0.7;
@@ -47,9 +47,15 @@ for i = 1:Skip_len:len-W_len-5
     end
 end
 figure;
-subplot(3,1,1);
-plot(1:len , VAD_ZC,'LineWidth',1.25);
-subplot(3,1,2);
-plot(1:len , VAD_SE,'LineWidth',1.25)
-subplot(3,1,3);
-plot(1:len,SigTime)
+subplot(2,1,1);
+%plot( (1:len)/Fs , VAD_ZC,'LineWidth',1.25);
+%subplot(2,1,1);
+plot( (1:len)/Fs , VAD_SE,'LineWidth',1.25)
+title('Zero Crossing - VAD - Male')
+xlabel('Time (s)')
+ylabel('Voice Activity')
+subplot(2,1,2);
+plot( (1:len)/Fs,SigTime)
+ylabel('Amplitude')
+xlabel('Time (s) ')
+title('Time Signal')

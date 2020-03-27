@@ -1,5 +1,5 @@
-function[pitch_period_To,pitch_freq_Fo] = get_pitch(y,Fs)
-y = y(1:5000,1);
+function[pitch_freq_Fo] = get_pitch(y,Fs)
+%y = y(1:5000,1);
 yl = length(y);
 %max_value=max(abs(y));
 %y=y/max_value;

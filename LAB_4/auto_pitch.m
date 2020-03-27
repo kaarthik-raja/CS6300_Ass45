@@ -1,12 +1,19 @@
 %Program to find autocorrelation of a speech segment
-[y,Fs]=audioread('a.wav');%input: speech segment
-y = y(1:5000,1);
+[y,Fs]=audioread('female_ishika.wav');%input: speech segment
+
+y = y(Fs*(2.3):Fs*(2.4),1);
+
 yl = length(y);
 %max_value=max(abs(y));
 %y=y/max_value;
 t=(1/Fs:1/Fs:(yl/Fs))*1000;
 subplot(2,1,1);
-plot(t,y);hold on;
+
+plot(t,y);
+title('Time Signal /female/')
+xlim([0 100]);
+hold on;
+ylabel('Amplitude');
 xlabel('time in milliseconds');
 sum1=0;autocor=zeros(1,length(y));
    for l=0:(yl-1)
@@ -20,8 +27,11 @@ sum1=0;autocor=zeros(1,length(y));
 kk=(1/Fs:1/Fs:(length(autocor)/Fs))*1000;
 subplot(2,1,2);
 %plot(t,y);hold on;
+
 plot(kk,autocor);
+title('Auto correlation /female/')
 xlim([0 102]);
+ylabel('Amplitude');
 xlabel('time in milliseconds');
 auto=autocor(21:yl);
   max1=0;
